@@ -1,0 +1,216 @@
+!
+! Last configuration change at 14:51:18 UTC Thu Nov 26 2026
+!
+version 15.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname r-mpls-5
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+mpls label protocol ldp
+!
+!
+cts logging verbose
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ no shutdown
+ ip address 172.5.1.1 255.255.255.255
+!
+interface GigabitEthernet0/0
+ no shutdown
+ ip address 10.4.0.2 255.255.255.252
+ ip router isis CYBER
+ duplex auto
+ speed auto
+ media-type rj45
+ mpls ip
+ bfd interval 300 min_rx 300 multiplier 3
+ isis hello-multiplier 5
+ isis bfd
+!
+interface GigabitEthernet0/1
+ no shutdown
+ ip address 10.5.0.1 255.255.255.252
+ ip router isis CYBER
+ duplex auto
+ speed auto
+ media-type rj45
+ mpls ip
+ bfd interval 300 min_rx 300 multiplier 3
+ isis hello-multiplier 5
+ isis bfd
+!
+interface GigabitEthernet0/2
+ no shutdown
+ ip address 10.7.0.2 255.255.255.252
+ ip router isis CYBER
+ duplex auto
+ speed auto
+ media-type rj45
+ mpls ip
+ bfd interval 300 min_rx 300 multiplier 3
+ isis hello-multiplier 5
+ isis bfd
+!
+interface GigabitEthernet0/3
+ no shutdown
+ description to pe-site-4
+ ip address 10.9.0.1 255.255.255.252
+ ip router isis CYBER
+ duplex auto
+ speed auto
+ media-type rj45
+ mpls ip
+ bfd interval 300 min_rx 300 multiplier 3
+ isis hello-multiplier 5
+ isis bfd
+!
+interface GigabitEthernet0/4
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router isis CYBER
+ mpls ldp sync
+ net 49.0001.0000.0000.0005.00
+ is-type level-2-only
+ metric-style wide
+ lsp-refresh-interval 650
+ spf-interval 1 2 5
+ lsp-gen-interval 5 5
+ bfd all-interfaces
+ bfd check-ctrl-plane-failure
+!
+router isis
+ bfd all-interfaces
+ bfd check-ctrl-plane-failure
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 172.4.2.1 255.255.255.255 10.40.0.2
+!
+!
+!
+mpls ldp router-id Loopback0 force
+!
+control-plane
+!
+banner exec ^CC
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* This software is provided as is without warranty for internal          *
+* development and testing purposes only under the terms of the Cisco     *
+* Early Field Trial agreement.  Under no circumstances may this software *
+* be used for production purposes or deployed in a production            *
+* environment.                                                           *
+*                                                                        *
+* By using the software, you agree to abide by the terms and conditions  *
+* of the Cisco Early Field Trial Agreement as well as the terms and      *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula                                           *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* Prohibited.                                                            *
+**************************************************************************^C
+banner incoming ^CC
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* This software is provided as is without warranty for internal          *
+* development and testing purposes only under the terms of the Cisco     *
+* Early Field Trial agreement.  Under no circumstances may this software *
+* be used for production purposes or deployed in a production            *
+* environment.                                                           *
+*                                                                        *
+* By using the software, you agree to abide by the terms and conditions  *
+* of the Cisco Early Field Trial Agreement as well as the terms and      *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula                                           *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* Prohibited.                                                            *
+**************************************************************************^C
+banner login ^CC
+**************************************************************************
+* IOSv - Cisco Systems Confidential                                      *
+*                                                                        *
+* This software is provided as is without warranty for internal          *
+* development and testing purposes only under the terms of the Cisco     *
+* Early Field Trial agreement.  Under no circumstances may this software *
+* be used for production purposes or deployed in a production            *
+* environment.                                                           *
+*                                                                        *
+* By using the software, you agree to abide by the terms and conditions  *
+* of the Cisco Early Field Trial Agreement as well as the terms and      *
+* conditions of the Cisco End User License Agreement at                  *
+* http://www.cisco.com/go/eula                                           *
+*                                                                        *
+* Unauthorized use or distribution of this software is expressly         *
+* Prohibited.                                                            *
+**************************************************************************^C
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end
