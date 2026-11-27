@@ -1,13 +1,13 @@
 # MPLS-ISIS-LAB--01
 
-This is a 6-router MPLS core running IS-IS as the IGP, with BFD on the links for fast failure detection. All links are /30 point-to-point connections on GigabitEthernet interfaces, and each router has a /32 loopback, which is typically used as the router ID, LDP/MPLS identifier and IS-IS/BGP source.</r>
+This is a 6-router MPLS core running IS-IS as the IGP, with BFD on the links for fast failure detection. All links are /30 point-to-point connections on GigabitEthernet interfaces, and each router has a /32 loopback, which is typically used as the router ID, LDP/MPLS identifier and IS-IS/BGP source.</rb>
 
-Routers and loopbacks</r>
-Router	Loopback0</r>
-r-mpls-1	172.1.1.1/32</r>
-r-mpls-2	172.2.1.1/32</r>
-r-mpls-3	172.3.1.1/32</r>
-r-mpls-4	172.4.1.1/32</r>
+Routers and loopbacks</br>
+Router	Loopback0</br>
+r-mpls-1	172.1.1.1/32</br>
+r-mpls-2	172.2.1.1/32</br>
+r-mpls-3	172.3.1.1/32</br>
+r-mpls-4	172.4.1.1/32</br>
 r-mpls-5	172.5.1.1/32</r>
 r-mpls-6	172.6.1.1/32</r>
 Links</r>
